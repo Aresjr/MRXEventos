@@ -1,0 +1,30 @@
+.ng-select-container, .ng-option {
+  @apply bg-base-100 text-base-content !important;
+}
+
+.ng-select .ng-select-container  {
+  border:1px;
+  max-height: 1rem !important; /* 2rem ≈ 32px (h-8 no Tailwind) */
+  height: 1rem !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.ng-select .ng-value-container {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+::ng-deep .ng-select.ng-select-multiple .ng-select-container {
+  min-height: 2.5rem;   /* altura inicial */
+  height: auto;         /* deixa crescer */
+  flex-wrap: wrap;      /* quebra de linha dos itens */
+  align-items: flex-start; /* não forçar ao topo */
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+::ng-deep .ng-select.ng-select-multiple .ng-value-container {
+  flex-wrap: wrap;   /* valores/chips em várias linhas */
+  align-content: flex-start;
+}
