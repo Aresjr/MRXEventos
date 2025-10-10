@@ -1,0 +1,29 @@
+// Animações customizadas
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-in-out;
+}
+
+.animate-fade-in-delay {
+  animation: fadeIn 1s ease-in-out 0.3s both;
+}
+
+// Estilos para scroll suave
+html {
+  scroll-behavior: smooth;
+}
+
+// Ajuste para navbar fixa
+section {
+  scroll-margin-top: 4rem;
+}
