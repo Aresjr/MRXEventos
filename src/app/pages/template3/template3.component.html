@@ -1,0 +1,101 @@
+<!-- Minimal Header -->
+<header class="bg-white border-b sticky top-0 z-50">
+  <div class="container mx-auto px-4">
+    <div class="navbar">
+      <div class="flex-1">
+        <span class="text-2xl font-light">MRX <strong>Eventos</strong></span>
+      </div>
+      <div class="flex-none">
+        <a href="#contact" class="btn btn-ghost btn-sm">Contato</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Hero Minimal -->
+<section class="min-h-screen flex items-center bg-base-100">
+  <div class="container mx-auto px-4">
+    <div class="max-w-4xl mx-auto text-center py-20">
+      <h1 class="text-6xl md:text-8xl font-light mb-8 leading-tight">
+        Eventos que<br/>
+        <span class="font-bold">Inspiram</span>
+      </h1>
+      <p class="text-xl md:text-2xl text-base-content/60 mb-12 max-w-2xl mx-auto">
+        Criamos experiências memoráveis com elegância e simplicidade
+      </p>
+      <a href="#contact" class="btn btn-primary btn-lg btn-wide">Vamos Conversar</a>
+    </div>
+  </div>
+</section>
+
+<!-- Features Grid -->
+<section class="py-32 bg-base-200">
+  <div class="container mx-auto px-4">
+    <div class="grid md:grid-cols-4 gap-12">
+      @for (feature of features; track feature.icon) {
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center">
+            <i-lucide [name]="feature.icon" class="w-12 h-12"></i-lucide>
+          </div>
+          <h3 class="text-lg font-bold mb-2">{{ feature.title }}</h3>
+          <p class="text-sm text-base-content/60">{{ feature.description }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="py-32 bg-base-100">
+  <div class="container mx-auto px-4">
+    <h2 class="text-5xl font-light text-center mb-20">Nossos <strong>Serviços</strong></h2>
+    <div class="grid md:grid-cols-3 gap-16 max-w-5xl mx-auto">
+      @for (service of services; track service.title) {
+        <div>
+          <h3 class="text-2xl font-bold mb-6 pb-4 border-b-2 border-primary">{{ service.title }}</h3>
+          <ul class="space-y-3">
+            @for (item of service.items; track item) {
+              <li class="flex items-center gap-3">
+                <div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                <span>{{ item }}</span>
+              </li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="py-32 bg-base-200">
+  <div class="container mx-auto px-4">
+    <div class="max-w-2xl mx-auto">
+      <h2 class="text-5xl font-light text-center mb-4">Entre em <strong>Contato</strong></h2>
+      <p class="text-center text-base-content/60 mb-12">Vamos criar algo extraordinário juntos</p>
+
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-6">
+        <div class="form-control">
+          <input type="text" formControlName="name" placeholder="Nome" class="input input-bordered input-lg" />
+        </div>
+        <div class="grid md:grid-cols-2 gap-6">
+          <input type="email" formControlName="email" placeholder="Email" class="input input-bordered input-lg" />
+          <input type="tel" formControlName="phone" placeholder="Telefone" class="input input-bordered input-lg" />
+        </div>
+        <textarea formControlName="message" placeholder="Mensagem" class="textarea textarea-bordered textarea-lg h-32 w-full"></textarea>
+        <button type="submit" class="btn btn-primary btn-lg btn-block" [disabled]="contactForm.invalid">Enviar Mensagem</button>
+      </form>
+
+      <div class="text-center mt-12 pt-12 border-t space-y-2">
+        <p>contato&#64;mrxeventos.com.br</p>
+        <p>(11) 3456-7890</p>
+        <p>São Paulo - SP</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-base-300 py-8 text-center">
+  <p class="text-sm text-base-content/60">© 2025 MRX Eventos - Todos os direitos reservados</p>
+</footer>

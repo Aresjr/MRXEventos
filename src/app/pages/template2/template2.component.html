@@ -1,0 +1,513 @@
+<!-- Top Bar -->
+<div class="bg-neutral text-neutral-content py-2">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-wrap justify-between items-center text-sm">
+      <div class="flex items-center gap-4">
+        <span class="flex items-center gap-2">
+          <i-lucide name="building-2" class="w-4 h-4"></i-lucide>
+          Navegantes / SC
+        </span>
+        <span class="flex items-center gap-2">
+          <i-lucide name="message-circle" class="w-4 h-4"></i-lucide>
+          (47) 3345-6789
+        </span>
+      </div>
+      <div class="flex items-center gap-2">
+        <i-lucide name="calendar" class="w-4 h-4"></i-lucide>
+        Atendimento: Seg-Sex 8h-18h
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Navbar -->
+<div class="navbar bg-base-100 shadow-lg sticky top-0 z-50">
+  <div class="container mx-auto">
+    <div class="flex-1">
+      <a class="text-2xl font-bold">
+        <span class="text-primary">MRX</span>
+        <span class="text-base-content"> Estruturas</span>
+      </a>
+    </div>
+    <div class="flex-none hidden md:flex">
+      <ul class="menu menu-horizontal px-1">
+        <li><a href="#home">Início</a></li>
+        <li><a href="#structures">Estruturas</a></li>
+        <li><a href="#about">Sobre</a></li>
+        <li><a href="#projects">Projetos</a></li>
+        <li><a href="#contact" class="btn btn-primary btn-sm">Orçamento</a></li>
+      </ul>
+    </div>
+    <div class="flex-none md:hidden">
+      <button class="btn btn-square btn-ghost">
+        <i-lucide name="menu" class="w-6 h-6"></i-lucide>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Hero Section -->
+<section id="home" class="relative bg-gradient-to-br from-neutral to-base-300 py-24 md:py-32">
+  <div class="container mx-auto px-4">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="text-content">
+        <div class="badge badge-primary badge-lg mb-4">Estruturas para Eventos</div>
+        <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+          Estruture Seu
+          <span class="text-primary block">Evento com Segurança</span>
+        </h1>
+        <p class="text-xl mb-8 opacity-80">
+          Palcos, coberturas, arquibancadas e muito mais. Soluções completas em estruturas metálicas para eventos de todos os portes em Santa Catarina.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="#contact" class="btn btn-primary btn-lg">
+            <i-lucide name="receipt-text" class="w-5 h-5"></i-lucide>
+            Solicitar Orçamento
+          </a>
+          <a href="#structures" class="btn btn-outline btn-lg">
+            <i-lucide name="search" class="w-5 h-5"></i-lucide>
+            Ver Estruturas
+          </a>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats shadow mt-8 bg-base-100">
+          <div class="stat place-items-center">
+            <div class="stat-value text-primary">20+</div>
+            <div class="stat-title">Anos</div>
+          </div>
+          <div class="stat place-items-center">
+            <div class="stat-value text-primary">5000+</div>
+            <div class="stat-title">Eventos</div>
+          </div>
+          <div class="stat place-items-center">
+            <div class="stat-value text-primary">100%</div>
+            <div class="stat-title">Segurança</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative">
+        <div class="relative z-10">
+          <img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=800&h=600&fit=crop"
+               alt="Estrutura de palco"
+               class="rounded-lg shadow-2xl w-full" />
+        </div>
+        <div class="absolute -bottom-8 -left-8 w-64 h-64 bg-primary opacity-20 rounded-lg -z-0"></div>
+        <div class="absolute -top-8 -right-8 w-64 h-64 bg-secondary opacity-20 rounded-lg -z-0"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Structures Section -->
+<section id="structures" class="py-20 bg-base-100">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold mb-4">Nossas Estruturas</h2>
+      <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+      <p class="text-lg max-w-2xl mx-auto mb-8">
+        Equipamentos de alta qualidade e resistência para garantir a segurança e o sucesso do seu evento
+      </p>
+
+      <!-- Filter Buttons -->
+      <div class="flex flex-wrap justify-center gap-2 mb-8">
+        <button
+          (click)="filterStructures('all')"
+          class="btn btn-sm"
+          [class.btn-primary]="activeCategory === 'all'"
+          [class.btn-outline]="activeCategory !== 'all'">
+          Todas
+        </button>
+        <button
+          (click)="filterStructures('palcos')"
+          class="btn btn-sm"
+          [class.btn-primary]="activeCategory === 'palcos'"
+          [class.btn-outline]="activeCategory !== 'palcos'">
+          Palcos
+        </button>
+        <button
+          (click)="filterStructures('coberturas')"
+          class="btn btn-sm"
+          [class.btn-primary]="activeCategory === 'coberturas'"
+          [class.btn-outline]="activeCategory !== 'coberturas'">
+          Coberturas
+        </button>
+        <button
+          (click)="filterStructures('arquibancadas')"
+          class="btn btn-sm"
+          [class.btn-primary]="activeCategory === 'arquibancadas'"
+          [class.btn-outline]="activeCategory !== 'arquibancadas'">
+          Arquibancadas
+        </button>
+        <button
+          (click)="filterStructures('fechamentos')"
+          class="btn btn-sm"
+          [class.btn-primary]="activeCategory === 'fechamentos'"
+          [class.btn-outline]="activeCategory !== 'fechamentos'">
+          Fechamentos
+        </button>
+        <button
+          (click)="filterStructures('outras')"
+          class="btn btn-sm"
+          [class.btn-primary]="activeCategory === 'outras'"
+          [class.btn-outline]="activeCategory !== 'outras'">
+          Outras
+        </button>
+      </div>
+    </div>
+
+    <!-- Structure Cards -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      @for (structure of filteredStructures; track structure.title) {
+        <div class="card bg-base-200 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-2">
+          <figure>
+            <img [src]="structure.image" [alt]="structure.title" class="w-full h-56 object-cover" />
+          </figure>
+          <div class="card-body">
+            <h3 class="card-title">{{ structure.title }}</h3>
+            <p class="text-sm opacity-70">{{ structure.description }}</p>
+            <ul class="mt-4 space-y-2">
+              @for (feature of structure.features; track feature) {
+                <li class="flex items-center gap-2 text-sm">
+                  <i-lucide name="chevron-right" class="w-4 h-4 text-primary flex-shrink-0"></i-lucide>
+                  <span>{{ feature }}</span>
+                </li>
+              }
+            </ul>
+            <div class="card-actions justify-end mt-4">
+              <a href="#contact" class="btn btn-primary btn-sm">Solicitar Orçamento</a>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="py-20 bg-base-200">
+  <div class="container mx-auto px-4">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="order-2 md:order-1">
+        <div class="badge badge-primary mb-4">Sobre Nós</div>
+        <h2 class="text-4xl font-bold mb-6">Referência em Estruturas para Eventos em SC</h2>
+        <p class="text-lg mb-4">
+          A MRX Estruturas atua há mais de 20 anos no mercado de locação de estruturas metálicas para eventos,
+          sendo referência em qualidade e segurança em Santa Catarina.
+        </p>
+        <p class="text-lg mb-4">
+          Localizada estrategicamente em Navegantes/SC, atendemos toda a região com agilidade e eficiência,
+          oferecendo desde pequenas estruturas até grandes montagens para festivais e eventos corporativos.
+        </p>
+
+        <div class="grid grid-cols-2 gap-4 mt-8">
+          <div class="flex items-start gap-3">
+            <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
+              <i-lucide name="calendar-check" class="w-6 h-6 text-white"></i-lucide>
+            </div>
+            <div>
+              <h4 class="font-bold">Experiência</h4>
+              <p class="text-sm opacity-70">Mais de 20 anos no mercado</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
+              <i-lucide name="briefcase-medical" class="w-6 h-6 text-white"></i-lucide>
+            </div>
+            <div>
+              <h4 class="font-bold">Segurança</h4>
+              <p class="text-sm opacity-70">Equipamentos certificados</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
+              <i-lucide name="users" class="w-6 h-6 text-white"></i-lucide>
+            </div>
+            <div>
+              <h4 class="font-bold">Equipe</h4>
+              <p class="text-sm opacity-70">Profissionais qualificados</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
+              <i-lucide name="refresh-cw" class="w-6 h-6 text-white"></i-lucide>
+            </div>
+            <div>
+              <h4 class="font-bold">Agilidade</h4>
+              <p class="text-sm opacity-70">Montagem e desmontagem rápida</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="order-1 md:order-2">
+        <div class="grid grid-cols-2 gap-4">
+          <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=400&h=300&fit=crop"
+               alt="Estrutura 1"
+               class="rounded-lg shadow-lg w-full h-48 object-cover" />
+          <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=400&h=300&fit=crop"
+               alt="Estrutura 2"
+               class="rounded-lg shadow-lg w-full h-48 object-cover mt-8" />
+          <img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=400&h=300&fit=crop"
+               alt="Estrutura 3"
+               class="rounded-lg shadow-lg w-full h-48 object-cover" />
+          <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400&h=300&fit=crop"
+               alt="Estrutura 4"
+               class="rounded-lg shadow-lg w-full h-48 object-cover mt-8" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects Gallery -->
+<section id="projects" class="py-20 bg-base-100">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold mb-4">Projetos Realizados</h2>
+      <div class="w-20 h-1 bg-primary mx-auto mb-4"></div>
+      <p class="text-lg max-w-2xl mx-auto">
+        Confira alguns dos eventos que estruturamos com excelência e segurança
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      @for (project of projects; track project.title) {
+        <div class="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer">
+          <img [src]="project.image" [alt]="project.title" class="w-full h-64 object-cover transition-transform group-hover:scale-110" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+            <div>
+              <h3 class="text-white font-bold text-xl">{{ project.title }}</h3>
+              <p class="text-white/80 text-sm">Ver detalhes →</p>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-20 bg-base-200">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold mb-4">Solicite um Orçamento</h2>
+      <div class="w-20 h-1 bg-primary mx-auto mb-4"></div>
+      <p class="text-lg max-w-2xl mx-auto">
+        Entre em contato conosco e receba um orçamento personalizado para seu evento
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-12">
+      <!-- Contact Form -->
+      <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+          <h3 class="card-title text-2xl mb-4">Preencha o Formulário</h3>
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+            <div class="grid md:grid-cols-2 gap-4 mb-4">
+              <div class="form-control">
+                <label class="label">
+                  <span class="label-text">Nome *</span>
+                </label>
+                <input
+                  type="text"
+                  formControlName="name"
+                  placeholder="Seu nome"
+                  class="input input-bordered"
+                  [class.input-error]="contactForm.get('name')?.invalid && contactForm.get('name')?.touched" />
+              </div>
+
+              <div class="form-control">
+                <label class="label">
+                  <span class="label-text">Telefone *</span>
+                </label>
+                <input
+                  type="tel"
+                  formControlName="phone"
+                  placeholder="(00) 00000-0000"
+                  class="input input-bordered"
+                  [class.input-error]="contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched" />
+              </div>
+            </div>
+
+            <div class="form-control mb-4">
+              <label class="label">
+                <span class="label-text">E-mail *</span>
+              </label>
+              <input
+                type="email"
+                formControlName="email"
+                placeholder="seuemail@exemplo.com"
+                class="input input-bordered"
+                [class.input-error]="contactForm.get('email')?.invalid && contactForm.get('email')?.touched" />
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 mb-4">
+              <div class="form-control">
+                <label class="label">
+                  <span class="label-text">Tipo de Estrutura *</span>
+                </label>
+                <select
+                  formControlName="structureType"
+                  class="select select-bordered"
+                  [class.select-error]="contactForm.get('structureType')?.invalid && contactForm.get('structureType')?.touched">
+                  <option value="" disabled selected>Selecione</option>
+                  <option value="palco">Palco</option>
+                  <option value="cobertura">Cobertura</option>
+                  <option value="arquibancada">Arquibancada</option>
+                  <option value="box-truss">Box Truss</option>
+                  <option value="outro">Outro</option>
+                </select>
+              </div>
+
+              <div class="form-control">
+                <label class="label">
+                  <span class="label-text">Data do Evento</span>
+                </label>
+                <input
+                  type="date"
+                  formControlName="eventDate"
+                  class="input input-bordered" />
+              </div>
+            </div>
+
+            <div class="form-control mb-4">
+              <label class="label">
+                <span class="label-text">Detalhes do Projeto *</span>
+              </label>
+              <textarea
+                formControlName="message"
+                class="textarea textarea-bordered h-24"
+                placeholder="Descreva as necessidades do seu evento..."
+                [class.textarea-error]="contactForm.get('message')?.invalid && contactForm.get('message')?.touched"></textarea>
+            </div>
+
+            <div class="form-control mt-6">
+              <button type="submit" class="btn btn-primary btn-block" [disabled]="contactForm.invalid">
+                <i-lucide name="receipt-text" class="w-5 h-5 mr-2"></i-lucide>
+                Solicitar Orçamento
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Contact Info -->
+      <div>
+        <div class="card bg-base-100 shadow-xl mb-6">
+          <div class="card-body">
+            <h3 class="card-title text-2xl mb-4">Informações de Contato</h3>
+
+            <div class="space-y-4">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                  <i-lucide name="building-2" class="w-6 h-6 text-white"></i-lucide>
+                </div>
+                <div>
+                  <h4 class="font-bold">Endereço</h4>
+                  <p>Rua das Estruturas, 500 - Galpão 3</p>
+                  <p>Centro, Navegantes - SC</p>
+                  <p>CEP: 88370-000</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                  <i-lucide name="message-circle" class="w-6 h-6 text-white"></i-lucide>
+                </div>
+                <div>
+                  <h4 class="font-bold">Telefones</h4>
+                  <p>(47) 3345-6789</p>
+                  <p>(47) 99876-5432</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                  <i-lucide name="mail" class="w-6 h-6 text-white"></i-lucide>
+                </div>
+                <div>
+                  <h4 class="font-bold">E-mail</h4>
+                  <p>contato&#64;mrxestruturas.com.br</p>
+                  <p>orcamento&#64;mrxestruturas.com.br</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                  <i-lucide name="calendar" class="w-6 h-6 text-white"></i-lucide>
+                </div>
+                <div>
+                  <h4 class="font-bold">Horário</h4>
+                  <p>Segunda a Sexta: 8h às 18h</p>
+                  <p>Sábados: 8h às 12h</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA Card -->
+        <div class="card bg-primary text-primary-content shadow-xl">
+          <div class="card-body text-center">
+            <h3 class="card-title justify-center text-2xl mb-2">Atendimento 24h</h3>
+            <p class="mb-4">Para emergências e urgências, estamos disponíveis a qualquer hora!</p>
+            <div class="flex items-center justify-center gap-2 text-xl font-bold">
+              <i-lucide name="message-circle" class="w-6 h-6"></i-lucide>
+              (47) 99876-5432
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer footer-center p-10 bg-neutral text-neutral-content">
+  <div class="container mx-auto">
+    <div class="grid md:grid-cols-4 gap-8 text-left w-full">
+      <div>
+        <h3 class="footer-title text-xl">
+          <span class="text-primary">MRX</span> Estruturas
+        </h3>
+        <p class="text-sm">
+          Referência em locação de estruturas metálicas para eventos em Santa Catarina há mais de 20 anos.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="footer-title">Estruturas</h3>
+        <a class="link link-hover">Palcos</a>
+        <a class="link link-hover">Coberturas</a>
+        <a class="link link-hover">Arquibancadas</a>
+        <a class="link link-hover">Box Truss</a>
+      </div>
+
+      <div>
+        <h3 class="footer-title">Empresa</h3>
+        <a class="link link-hover">Sobre Nós</a>
+        <a class="link link-hover">Projetos</a>
+        <a class="link link-hover">Certificações</a>
+        <a class="link link-hover">Contato</a>
+      </div>
+
+      <div>
+        <h3 class="footer-title">Atendimento</h3>
+        <p class="text-sm">Navegantes / SC</p>
+        <p class="text-sm">(47) 3345-6789</p>
+        <p class="text-sm">contato&#64;mrxestruturas.com.br</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="text-center">
+      <p>Copyright © 2025 - MRX Estruturas - Todos os direitos reservados</p>
+    </div>
+  </div>
+</footer>
