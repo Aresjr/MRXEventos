@@ -1,7 +1,16 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LucideAngularModule } from 'lucide-angular';
+import { HttpClient } from '@angular/common/http';
+
+interface Event {
+  id: number;
+  name: string;
+  date: string;
+  location: string;
+  type: string;
+}
 
 @Component({
   selector: 'app-template1',
@@ -12,7 +21,11 @@ import { LucideAngularModule } from 'lucide-angular';
 export class Template1Component implements OnInit, OnDestroy {
   contactForm: FormGroup;
   currentSlide = 0;
+  activeSection = 'home';
   private slideInterval: any;
+
+  upcomingEvents: Event[] = [];
+  pastEvents: Event[] = [];
 
   slides = [
     {
@@ -32,7 +45,7 @@ export class Template1Component implements OnInit, OnDestroy {
     }
   ];
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private http: HttpClient) {
     this.contactForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
@@ -44,11 +57,65 @@ export class Template1Component implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.startSlider();
+    this.updateActiveSection();
+    this.loadEvents();
+  }
+
+  loadEvents() {
+    this.http.get<Event[]>('/data/events.json').subscribe({
+      next: (events) => {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        this.upcomingEvents = events
+          .filter(event => new Date(event.date) >= today)
+          .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+
+        this.pastEvents = events
+          .filter(event => new Date(event.date) < today)
+          .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+      },
+      error: (error) => {
+        console.error('Erro ao carregar eventos:', error);
+      }
+    });
+  }
+
+  formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('pt-BR', {
+      day: '2-digit',
+      month: 'long',
+      year: 'numeric'
+    });
   }
 
   ngOnDestroy() {
     if (this.slideInterval) {
       clearInterval(this.slideInterval);
+    }
+  }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.updateActiveSection();
+  }
+
+  updateActiveSection() {
+    const sections = ['home', 'about', 'services', 'contact'];
+    const scrollPosition = window.scrollY + 100;
+
+    for (const section of sections) {
+      const element = document.getElementById(section);
+      if (element) {
+        const offsetTop = element.offsetTop;
+        const offsetHeight = element.offsetHeight;
+
+        if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+          this.activeSection = section;
+          break;
+        }
+      }
     }
   }
 
@@ -72,9 +139,30 @@ export class Template1Component implements OnInit, OnDestroy {
 
   onSubmit() {
     if (this.contactForm.valid) {
-      console.log('Formulário enviado:', this.contactForm.value);
-      alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
-      this.contactForm.reset();
+      const formData = this.contactForm.value;
+
+      // Enviar email via FormSubmit
+      const emailData = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        eventType: formData.eventType,
+        message: formData.message,
+        _subject: `Novo contato do site - ${formData.name}`,
+        _cc: 'aresnemeia@gmail.com'
+      };
+
+      this.http.post('https://formsubmit.co/aresnemeia@gmail.com', emailData)
+        .subscribe({
+          next: () => {
+            alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+            this.contactForm.reset();
+          },
+          error: (error) => {
+            console.error('Erro ao enviar:', error);
+            alert('Erro ao enviar mensagem. Por favor, tente novamente.');
+          }
+        });
     }
   }
 }

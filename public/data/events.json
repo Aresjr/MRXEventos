@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "Congresso de Tecnologia 2024",
+    "date": "2024-11-15",
+    "location": "Centro de Convenções - São Paulo, SP",
+    "type": "Corporativo"
+  },
+  {
+    "id": 2,
+    "name": "Casamento Ana & Carlos",
+    "date": "2024-12-20",
+    "location": "Quinta da Baroneza - São Paulo, SP",
+    "type": "Social"
+  },
+  {
+    "id": 3,
+    "name": "Festival de Música",
+    "date": "2025-01-10",
+    "location": "Parque Ibirapuera - São Paulo, SP",
+    "type": "Cultural"
+  },
+  {
+    "id": 4,
+    "name": "Formatura Medicina USP",
+    "date": "2025-02-05",
+    "location": "Espaço de Eventos - São Paulo, SP",
+    "type": "Social"
+  },
+  {
+    "id": 5,
+    "name": "Convenção Empresarial",
+    "date": "2025-03-12",
+    "location": "Hotel Transamérica - São Paulo, SP",
+    "type": "Corporativo"
+  },
+  {
+    "id": 6,
+    "name": "Aniversário 50 Anos - Maria Silva",
+    "date": "2025-04-20",
+    "location": "Buffet Celebrations - São Paulo, SP",
+    "type": "Social"
+  },
+  {
+    "id": 7,
+    "name": "Workshop de Inovação",
+    "date": "2025-05-08",
+    "location": "FIESP - São Paulo, SP",
+    "type": "Corporativo"
+  },
+  {
+    "id": 8,
+    "name": "Casamento Julia & Pedro",
+    "date": "2025-06-15",
+    "location": "Villa Bisutti - São Paulo, SP",
+    "type": "Social"
+  }
+]

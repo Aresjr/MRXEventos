@@ -6,7 +6,8 @@
       "Bash(timeout:*)",
       "Bash(taskkill:*)",
       "Bash(dir:*)",
-      "Bash(ng generate:*)"
+      "Bash(ng generate:*)",
+      "Bash(cat:*)"
     ],
     "deny": [],
     "ask": []

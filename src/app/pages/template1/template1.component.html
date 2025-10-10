@@ -6,10 +6,10 @@
     </div>
     <div class="flex-none hidden md:flex">
       <ul class="menu menu-horizontal px-1">
-        <li><a href="#home">Início</a></li>
-        <li><a href="#about">Sobre</a></li>
-        <li><a href="#services">Serviços</a></li>
-        <li><a href="#contact">Contato</a></li>
+        <li><a href="#home" [class.active]="activeSection === 'home'">Início</a></li>
+        <li><a href="#about" [class.active]="activeSection === 'about'">Sobre</a></li>
+        <li><a href="#services" [class.active]="activeSection === 'services'">Serviços</a></li>
+        <li><a href="#contact" [class.active]="activeSection === 'contact'">Contato</a></li>
       </ul>
     </div>
     <div class="flex-none md:hidden">
@@ -110,8 +110,91 @@
   </div>
 </section>
 
+<!-- Events Section -->
+<section class="py-20 bg-base-100">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold mb-4">Nossos Eventos</h2>
+      <div class="w-20 h-1 bg-primary mx-auto"></div>
+    </div>
+
+    <!-- Upcoming Events -->
+    @if (upcomingEvents.length > 0) {
+      <div class="mb-16">
+        <h3 class="text-3xl font-bold mb-8 text-center">
+          <i-lucide name="calendar-plus" class="w-8 h-8 inline mr-2 text-primary"></i-lucide>
+          Próximos Eventos
+        </h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          @for (event of upcomingEvents; track event.id) {
+            <div class="card bg-base-200 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1">
+              <div class="card-body">
+                <div class="flex items-start justify-between mb-2">
+                  <span class="badge badge-primary">{{ event.type }}</span>
+                  <i-lucide name="calendar" class="w-5 h-5 text-primary"></i-lucide>
+                </div>
+                <h4 class="card-title text-xl mb-3">{{ event.name }}</h4>
+                <div class="space-y-2">
+                  <div class="flex items-center gap-2 text-sm">
+                    <i-lucide name="calendar-check" class="w-4 h-4 text-primary flex-shrink-0"></i-lucide>
+                    <span class="font-semibold">{{ formatDate(event.date) }}</span>
+                  </div>
+                  <div class="flex items-start gap-2 text-sm">
+                    <i-lucide name="building-2" class="w-4 h-4 text-primary flex-shrink-0 mt-0.5"></i-lucide>
+                    <span>{{ event.location }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    }
+
+    <!-- Past Events -->
+    @if (pastEvents.length > 0) {
+      <div>
+        <h3 class="text-3xl font-bold mb-8 text-center">
+          <i-lucide name="calendar-check" class="w-8 h-8 inline mr-2 text-base-content/50"></i-lucide>
+          Eventos Realizados
+        </h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          @for (event of pastEvents; track event.id) {
+            <div class="card bg-base-200 shadow-xl opacity-75 hover:opacity-100 transition-opacity">
+              <div class="card-body">
+                <div class="flex items-start justify-between mb-2">
+                  <span class="badge badge-ghost">{{ event.type }}</span>
+                  <i-lucide name="calendar" class="w-5 h-5 text-base-content/50"></i-lucide>
+                </div>
+                <h4 class="card-title text-xl mb-3">{{ event.name }}</h4>
+                <div class="space-y-2 opacity-70">
+                  <div class="flex items-center gap-2 text-sm">
+                    <i-lucide name="calendar-check" class="w-4 h-4 flex-shrink-0"></i-lucide>
+                    <span>{{ formatDate(event.date) }}</span>
+                  </div>
+                  <div class="flex items-start gap-2 text-sm">
+                    <i-lucide name="building-2" class="w-4 h-4 flex-shrink-0 mt-0.5"></i-lucide>
+                    <span>{{ event.location }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    }
+
+    @if (upcomingEvents.length === 0 && pastEvents.length === 0) {
+      <div class="text-center py-12">
+        <i-lucide name="calendar-plus" class="w-16 h-16 mx-auto mb-4 text-base-content/30"></i-lucide>
+        <p class="text-lg text-base-content/50">Nenhum evento cadastrado no momento.</p>
+      </div>
+    }
+  </div>
+</section>
+
 <!-- Services Section -->
-<section id="services" class="py-20 bg-base-100">
+<section id="services" class="py-20 bg-base-200">
   <div class="container mx-auto px-4">
     <div class="text-center mb-12">
       <h2 class="text-4xl font-bold mb-4">Nossos Serviços</h2>
