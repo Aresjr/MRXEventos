@@ -3,27 +3,6 @@ module.exports = {
   content: [
     "./src/**/*.{html,ts}"
   ],
-  safelist: [
-    "bg-green-100",
-    "bg-blue-100",
-    "bg-blue-500",
-    "bg-blue-600",
-    "bg-blue-800",
-    "bg-gray-100",
-    "bg-orange-100",
-    "bg-yellow-100",
-    "bg-red-100",
-    "border-error",
-    "bg-white",
-    "bg-[#60a5fa]",
-    "bg-[#3B82F6]",
-    "bg-[#2563EB]",
-    "bg-[#06B6D4]",
-    "bg-[#EF4444]",
-    "bg-[#F59E0B]",
-    "bg-[#14B8A6]",
-    "bg-[#A78BFA]"
-  ],
   theme: {
     extend: {
       fontFamily: {
@@ -40,10 +19,10 @@ module.exports = {
   ],
   daisyui: {
     themes: [
-      "dark", "fantasy",
       {
-        brigida: {
-          "primary": "#2563eb",
+        mrxeventos: {
+          "primary": "#02a550",
+          "primary-content": "#ffffff",
           "secondary": "#A78BFA",
           "secondary-content": "#ffffff",
           "accent": "#60a5fa",
