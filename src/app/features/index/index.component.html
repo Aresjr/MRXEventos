@@ -1,1 +1,139 @@
-<button class="btn btn-primary">MRX Eventos</button>
+<div class="min-h-screen bg-black text-white">
+  <!-- Layout principal com bloco 40% esquerda e slider 60% direita - altura 720px -->
+  <div class="flex flex-col md:flex-row h-[720px] relative">
+
+    <!-- Bloco Esquerdo (40%) -->
+    <div class="w-full md:w-2/5 bg-black p-16 flex flex-col justify-center relative">
+      <!-- Gradiente bottom-left -->
+      <div class="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-primary/30 to-transparent rounded-full blur-3xl -z-10"></div>
+
+      <img src="assets/images/mrx-eventos.png" alt="MRX Eventos" class="mb-8 w-full max-w-md" />
+      <p class="text-xl text-gray-300 mb-8">
+        Experiências únicas e inesquecíveis para você e sua empresa
+      </p>
+      <button class="btn btn-primary w-fit">
+        Conheça nossos eventos
+      </button>
+    </div>
+
+    <!-- Slider Direito (60%) -->
+    <div class="w-full md:w-3/5 bg-black relative p-8">
+      <!-- Gradiente top-right -->
+      <div class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-primary/30 to-transparent rounded-full blur-3xl -z-10"></div>
+
+      <div class="carousel w-full h-full border-t-4 border-l-4 border-primary rounded-tl-[80px] overflow-hidden">
+        <!-- Slide 1 -->
+        <div id="slide1" class="carousel-item relative w-full h-full">
+          <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200&h=720&fit=crop"
+               alt="Evento Corporativo"
+               class="w-full h-full object-cover" />
+        </div>
+
+        <!-- Slide 2 -->
+        <div id="slide2" class="carousel-item relative w-full h-full">
+          <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1200&h=720&fit=crop"
+               alt="Festa e Celebração"
+               class="w-full h-full object-cover" />
+        </div>
+
+        <!-- Slide 3 -->
+        <div id="slide3" class="carousel-item relative w-full h-full">
+          <img src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=1200&h=720&fit=crop"
+               alt="Conferência"
+               class="w-full h-full object-cover" />
+        </div>
+      </div>
+
+      <!-- Botões de navegação fixos -->
+      <div class="absolute top-1/2 transform -translate-y-1/2 left-12 right-12 flex justify-between pointer-events-none">
+        <a href="#slide3" class="btn btn-circle btn-sm pointer-events-auto">❮</a>
+        <a href="#slide2" class="btn btn-circle btn-sm pointer-events-auto">❯</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bloco descritivo abaixo -->
+  <div class="bg-black py-16 px-8">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-4xl font-bold mb-8 text-white text-center">Sobre Nossos Eventos</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-black border border-gray-800 p-6 rounded-lg">
+          <h3 class="text-2xl font-bold mb-4 text-primary">Planejamento</h3>
+          <p class="text-gray-300">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </div>
+        <div class="bg-black border border-gray-800 p-6 rounded-lg">
+          <h3 class="text-2xl font-bold mb-4 text-primary">Execução</h3>
+          <p class="text-gray-300">
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          </p>
+        </div>
+        <div class="bg-black border border-gray-800 p-6 rounded-lg">
+          <h3 class="text-2xl font-bold mb-4 text-primary">Resultados</h3>
+          <p class="text-gray-300">
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rodapé -->
+  <footer class="bg-black border-t border-gray-800 py-12 px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <!-- Telefone -->
+        <div class="text-center md:text-left">
+          <h3 class="text-xl font-bold mb-4 text-primary">Telefone</h3>
+          <p class="text-gray-300">
+            <a href="tel:+5511999999999" class="hover:text-primary transition-colors">
+              (11) 99999-9999
+            </a>
+          </p>
+          <p class="text-gray-300">
+            <a href="tel:+5511888888888" class="hover:text-primary transition-colors">
+              (11) 88888-8888
+            </a>
+          </p>
+        </div>
+
+        <!-- Email -->
+        <div class="text-center">
+          <h3 class="text-xl font-bold mb-4 text-primary">Email</h3>
+          <p class="text-gray-300">
+            <a href="mailto:contato@mrxeventos.com.br" class="hover:text-primary transition-colors">
+              contato&#64;mrxeventos.com.br
+            </a>
+          </p>
+          <p class="text-gray-300">
+            <a href="mailto:eventos@mrxeventos.com.br" class="hover:text-primary transition-colors">
+              eventos&#64;mrxeventos.com.br
+            </a>
+          </p>
+        </div>
+
+        <!-- Endereço -->
+        <div class="text-center md:text-right">
+          <h3 class="text-xl font-bold mb-4 text-primary">Endereço</h3>
+          <p class="text-gray-300">
+            Av. Exemplo, 1234<br>
+            Bairro Exemplo<br>
+            São Paulo - SP<br>
+            CEP: 01234-567
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Copyright -->
+      <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+        <p class="text-gray-500">
+          &copy; 2025 MRX Eventos. Todos os direitos reservados.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
