@@ -1,53 +1,60 @@
-<div class="min-h-screen bg-black text-white">
+<div class="min-h-screen bg-black text-white relative overflow-hidden">
+
+  <div class="absolute -top-16 -right-16 w-96 h-96 bg-gradient-to-tr from-black to-primary/50 blur-lg z-20 pointer-events-none"></div>
+
   <!-- Layout principal com bloco 40% esquerda e slider 60% direita - altura 720px -->
   <div class="flex flex-col md:flex-row h-[720px] relative">
 
+    <div class="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-primary/50 to-transparent blur-lg z-20 pointer-events-none"></div>
+
     <!-- Bloco Esquerdo (40%) -->
     <div class="w-full md:w-2/5 bg-black p-16 flex flex-col justify-center relative">
-      <!-- Gradiente bottom-left -->
-      <div class="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-primary/30 to-transparent rounded-full blur-3xl -z-10"></div>
 
-      <img src="assets/images/mrx-eventos.png" alt="MRX Eventos" class="mb-8 w-full max-w-md" />
-      <p class="text-xl text-gray-300 mb-8">
-        Experiências únicas e inesquecíveis para você e sua empresa
+      <img src="assets/images/mrx-eventos.png" alt="MRX Eventos" class="mb-8 w-full max-w-lg z-20" />
+
+      <p class="text-gray-300 mb-8 mt-4 uppercase z-20">
+        <span class="text-4xl">Fazendo do seu</span><br/>
+        <span class="text-3xl font-extrabold">evento Um sucesso</span>
       </p>
-      <button class="btn btn-primary w-fit">
-        Conheça nossos eventos
-      </button>
+
+      <!-- Gradiente bottom-left -->
+      <div class="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-primary/30 to-transparent rounded-full blur-3xl z-20"></div>
+
     </div>
 
     <!-- Slider Direito (60%) -->
-    <div class="w-full md:w-3/5 bg-black relative p-8">
-      <!-- Gradiente top-right -->
-      <div class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-primary/30 to-transparent rounded-full blur-3xl -z-10"></div>
-
-      <div class="carousel w-full h-full border-t-4 border-l-4 border-primary rounded-tl-[80px] overflow-hidden">
+    <div class="w-full md:w-3/5 bg-black relative p-12">
+      <div class="w-full h-full border-t-4 border-l-4 border-primary rounded-tl-[80px] overflow-hidden relative cursor-grab active:cursor-grabbing z-20"
+           (touchstart)="onTouchStart($event)"
+           (touchend)="onTouchEnd($event)"
+           (mousedown)="onMouseDown($event)"
+           (mouseup)="onMouseUp($event)">
         <!-- Slide 1 -->
-        <div id="slide1" class="carousel-item relative w-full h-full">
+        <div [class.hidden]="currentSlide !== 1" class="w-full h-full">
           <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200&h=720&fit=crop"
                alt="Evento Corporativo"
-               class="w-full h-full object-cover" />
+               class="w-full h-full object-cover pointer-events-none" />
         </div>
 
         <!-- Slide 2 -->
-        <div id="slide2" class="carousel-item relative w-full h-full">
+        <div [class.hidden]="currentSlide !== 2" class="w-full h-full">
           <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1200&h=720&fit=crop"
                alt="Festa e Celebração"
-               class="w-full h-full object-cover" />
+               class="w-full h-full object-cover pointer-events-none" />
         </div>
 
         <!-- Slide 3 -->
-        <div id="slide3" class="carousel-item relative w-full h-full">
+        <div [class.hidden]="currentSlide !== 3" class="w-full h-full">
           <img src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=1200&h=720&fit=crop"
                alt="Conferência"
-               class="w-full h-full object-cover" />
+               class="w-full h-full object-cover pointer-events-none" />
         </div>
       </div>
 
       <!-- Botões de navegação fixos -->
       <div class="absolute top-1/2 transform -translate-y-1/2 left-12 right-12 flex justify-between pointer-events-none">
-        <a href="#slide3" class="btn btn-circle btn-sm pointer-events-auto">❮</a>
-        <a href="#slide2" class="btn btn-circle btn-sm pointer-events-auto">❯</a>
+        <button (click)="previousSlide()" class="btn btn-circle btn-sm pointer-events-auto">❮</button>
+        <button (click)="nextSlide()" class="btn btn-circle btn-sm pointer-events-auto">❯</button>
       </div>
     </div>
 
@@ -89,13 +96,8 @@
         <div class="text-center md:text-left">
           <h3 class="text-xl font-bold mb-4 text-primary">Telefone</h3>
           <p class="text-gray-300">
-            <a href="tel:+5511999999999" class="hover:text-primary transition-colors">
-              (11) 99999-9999
-            </a>
-          </p>
-          <p class="text-gray-300">
-            <a href="tel:+5511888888888" class="hover:text-primary transition-colors">
-              (11) 88888-8888
+            <a href="tel:+5547996460137" class="hover:text-primary transition-colors">
+              (47) 99646-0137
             </a>
           </p>
         </div>
@@ -119,10 +121,9 @@
         <div class="text-center md:text-right">
           <h3 class="text-xl font-bold mb-4 text-primary">Endereço</h3>
           <p class="text-gray-300">
-            Av. Exemplo, 1234<br>
-            Bairro Exemplo<br>
-            São Paulo - SP<br>
-            CEP: 01234-567
+            Balneário Camboriú<br>
+            Santa Catarina<br>
+            Brasil
           </p>
         </div>
 
