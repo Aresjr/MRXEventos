@@ -7,7 +7,11 @@
       "Bash(taskkill:*)",
       "Bash(dir:*)",
       "Bash(ng generate:*)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(del \"C:\\Users\\aresn\\IdeaProjects\\MRXEventos\\src\\app\\features\\evento-card\\evento-card.component.html\")",
+      "Bash(nul)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)"
     ],
     "deny": [],
     "ask": []

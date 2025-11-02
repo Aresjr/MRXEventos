@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "titulo": "Festival de Verão BC 2025",
+    "data": "2025-12-15",
+    "localizacao": "Praia Central, Balneário Camboriú - SC",
+    "fotos": []
+  },
+  {
+    "id": 2,
+    "titulo": "Casamento Maria & Carlos",
+    "data": "2025-11-20",
+    "localizacao": "Espaço Jardim das Flores, Camboriú - SC",
+    "fotos": []
+  },
+  {
+    "id": 3,
+    "titulo": "Feira de Negócios 2024",
+    "data": "2024-11-10",
+    "localizacao": "Centro de Convenções, Balneário Camboriú - SC",
+    "fotos": [
+      "assets/imagens/eventos/6.jpg",
+      "assets/imagens/eventos/1.jpg"
+    ]
+  },
+  {
+    "id": 4,
+    "titulo": "Show de Réveillon 2024",
+    "data": "2024-12-31",
+    "localizacao": "Praia Central, Balneário Camboriú - SC",
+    "fotos": []
+  },
+  {
+    "id": 5,
+    "titulo": "Aniversário Corporativo MRX",
+    "data": "2024-10-05",
+    "localizacao": "Sede MRX Eventos, Camboriú - SC",
+    "fotos": [
+      "assets/imagens/eventos/5.jpg",
+      "assets/imagens/eventos/6.jpg"
+    ]
+  },
+  {
+    "id": 6,
+    "titulo": "Formatura Turma 2025",
+    "data": "2025-07-15",
+    "localizacao": "Salão de Festas Majestic, Balneário Camboriú - SC",
+    "fotos": []
+  },
+  {
+    "id": 7,
+    "titulo": "Conferência Tech Summit",
+    "data": "2025-06-20",
+    "localizacao": "Centro de Inovação, Balneário Camboriú - SC",
+    "fotos": []
+  },
+  {
+    "id": 8,
+    "titulo": "Festival Gastronômico",
+    "data": "2024-09-15",
+    "localizacao": "Parque Unipraias, Balneário Camboriú - SC",
+    "fotos": [
+      "assets/imagens/eventos/2.jpg",
+      "assets/imagens/eventos/3.jpg"
+    ]
+  },
+  {
+    "id": 9,
+    "titulo": "Evento Corporativo Verão",
+    "data": "2025-03-10",
+    "localizacao": "Hotel Marambaia, Balneário Camboriú - SC",
+    "fotos": []
+  },
+  {
+    "id": 10,
+    "titulo": "Festival de Música BC",
+    "data": "2025-05-25",
+    "localizacao": "Parque Cyro Gevaerd, Balneário Camboriú - SC",
+    "fotos": []
+  },
+  {
+    "id": 11,
+    "titulo": "Feira de Artesanato",
+    "data": "2024-08-12",
+    "localizacao": "Avenida Atlântica, Balneário Camboriú - SC",
+    "fotos": [
+      "assets/imagens/eventos/1.jpg",
+      "assets/imagens/eventos/2.jpg",
+      "assets/imagens/eventos/3.jpg"
+    ]
+  }
+]

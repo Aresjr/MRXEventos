@@ -1,0 +1,55 @@
+<div class="bg-gradient-to-br from-black to-primary/10 border-2 rounded-xl overflow-hidden shadow-2xl transition-all duration-300 hover:shadow-primary/20 hover:scale-[1.02] h-full flex flex-col" [class.border-primary]="!isPastEvent" [class.border-gray-600]="isPastEvent" [class.opacity-75]="isPastEvent">
+  <div class="relative h-64 overflow-hidden">
+    @if (evento.fotos.length === 0) {
+      <div class="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
+        <div class="text-center px-4">
+          <svg class="w-16 h-16 mx-auto mb-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          @if (isPastEvent) {
+            <p class="text-gray-400 font-semibold">Não há fotos disponíveis</p>
+            <p class="text-gray-500 text-sm mt-2">Este evento já foi realizado</p>
+          } @else {
+            <p class="text-gray-400 font-semibold">Evento ainda não realizado</p>
+            <p class="text-gray-500 text-sm mt-2">Fotos disponíveis após o evento</p>
+          }
+        </div>
+      </div>
+    } @else {
+      @for (foto of evento.fotos; track $index) {
+        @if (currentPhotoIndex === $index) {
+          <div class="w-full h-full">
+            <img [src]="foto" [alt]="evento.titulo" class="w-full h-full object-cover" />
+          </div>
+        }
+      }
+      @if (evento.fotos.length > 1) {
+        <div class="absolute inset-0 flex items-center justify-between p-4">
+          <button (click)="previousPhoto()" class="btn btn-circle btn-sm bg-black/50 hover:bg-black/70 border-none text-white">❮</button>
+          <button (click)="nextPhoto()" class="btn btn-circle btn-sm bg-black/50 hover:bg-black/70 border-none text-white">❯</button>
+        </div>
+      }
+    }
+    <div class="absolute top-4 right-4 text-white px-3 py-1 rounded-full text-sm font-semibold" [class.bg-gray-700]="isPastEvent" [class.bg-primary]="!isPastEvent">
+      {{ formatDate(evento.data) }}
+    </div>
+  </div>
+  <div class="p-6 flex-1 flex flex-col">
+    <h3 class="text-2xl font-bold text-white mb-3">{{ evento.titulo }}</h3>
+    <div class="space-y-2 flex-1">
+      <div class="flex items-start gap-2 text-gray-300">
+        <svg class="w-5 h-5 mt-0.5 flex-shrink-0" [class.text-primary]="!isPastEvent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+        <span class="font-medium">{{ formatDate(evento.data) }}</span>
+      </div>
+      <div class="flex items-start gap-2 text-gray-300">
+        <svg class="w-5 h-5 mt-0.5 flex-shrink-0" [class.text-primary]="!isPastEvent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+        <span>{{ evento.localizacao }}</span>
+      </div>
+    </div>
+  </div>
+</div>

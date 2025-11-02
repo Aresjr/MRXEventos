@@ -1,0 +1,74 @@
+<div class="bg-black py-16 px-8">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Título -->
+    <div class="text-center mb-12">
+      <h2 class="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-primary/100 mb-4">
+        Nossos Eventos
+      </h2>
+      <p class="text-gray-400 text-lg">Confira os eventos que já realizamos e os que estão por vir</p>
+      <div class="mt-6 flex justify-center">
+        <div class="w-32 h-1 bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+      </div>
+    </div>
+
+    <!-- Calendário de Meses -->
+    <div class="mb-12">
+      <div class="flex items-center justify-center gap-4 mb-6">
+        <h3 class="text-2xl font-bold text-white">{{ selectedYear }}</h3>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 mb-6">
+        <button
+          (click)="selecionarMes(null)"
+          [class.bg-primary]="selectedMonth === null"
+          [class.bg-gray-800]="selectedMonth !== null"
+          class="py-3 px-4 rounded-lg font-semibold transition-all hover:scale-105 border-2"
+          [class.border-primary]="selectedMonth === null"
+          [class.border-transparent]="selectedMonth !== null">
+          Todos
+        </button>
+
+        <button
+          *ngFor="let mes of meses"
+          (click)="selecionarMes(mes.numero)"
+          [class.bg-primary]="selectedMonth === mes.numero"
+          [class.bg-gray-800]="selectedMonth !== mes.numero"
+          [class.opacity-50]="!temEventosNoMes(mes.numero)"
+          [disabled]="!temEventosNoMes(mes.numero)"
+          class="py-3 px-4 rounded-lg font-semibold transition-all hover:scale-105 relative border-2"
+          [class.border-primary]="selectedMonth === mes.numero"
+          [class.border-transparent]="selectedMonth !== mes.numero"
+          [class.cursor-not-allowed]="!temEventosNoMes(mes.numero)">
+          {{ mes.nome }}
+          <span *ngIf="temEventosNoMes(mes.numero)"
+                class="absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full w-6 h-6 flex items-center justify-center font-bold">
+            {{ getEventosDoMes(mes.numero) }}
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Grade de Eventos -->
+    <div *ngIf="eventosFiltrados.length > 0" class="mb-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <app-evento-card
+          *ngFor="let evento of eventosFiltrados"
+          [evento]="evento"
+          [isPastEvent]="isEventoPast(evento)">
+        </app-evento-card>
+      </div>
+    </div>
+
+    <!-- Mensagem quando não há eventos filtrados -->
+    <div *ngIf="eventosFiltrados.length === 0"
+         class="text-center py-16">
+      <svg class="w-24 h-24 mx-auto text-gray-700 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+      </svg>
+      <h3 class="text-2xl font-bold text-gray-600 mb-2">Nenhum evento encontrado</h3>
+      <p class="text-gray-500">Não há eventos para o período selecionado.</p>
+    </div>
+
+  </div>
+</div>
