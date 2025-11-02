@@ -1,67 +1,63 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-contato-form',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './contato-form.component.html',
   styleUrl: './contato-form.component.scss'
 })
 export class ContatoFormComponent {
-  contatoForm: FormGroup;
-  submitting = false;
-  submitSuccess = false;
-  submitError = false;
 
-  constructor(private fb: FormBuilder) {
-    this.contatoForm = this.fb.group({
-      nomeEmpresa: ['', Validators.required],
-      dataEvento: ['', Validators.required],
-      observacoes: ['', Validators.required]
-    });
-  }
+  constructor(private http: HttpClient) {}
 
-  onSubmit(): void {
-    if (this.contatoForm.valid) {
-      this.submitting = true;
-      this.submitSuccess = false;
-      this.submitError = false;
+  formData: any = {
+    _subject: 'Novo Orçamento - Site MRX Eventos',
+    _captcha: 'false',
+    _template: 'table',
+    _honey: '',
+    nomeEmpresa: '',
+    dataEvento: '',
+    observacoes: ''
+  };
 
-      const formData = this.contatoForm.value;
-      const subject = `Orçamento - ${formData.nomeEmpresa}`;
-      const body = `Nome da Empresa: ${formData.nomeEmpresa}%0D%0AData do Evento: ${formData.dataEvento}%0D%0AObservações: ${formData.observacoes}`;
-
-      // Usar mailto para abrir o cliente de email
-      const mailtoLink = `mailto:rafael@mrxeventos.com.br?subject=${encodeURIComponent(subject)}&body=${body}`;
-      window.location.href = mailtoLink;
-
-      // Mostrar mensagem de sucesso e resetar formulário
-      setTimeout(() => {
-        this.submitting = false;
-        this.submitSuccess = true;
-        this.contatoForm.reset();
-
-        // Esconder mensagem após 5 segundos
-        setTimeout(() => {
-          this.submitSuccess = false;
-        }, 5000);
-      }, 500);
-    } else {
-      // Marcar todos os campos como touched para mostrar erros
-      Object.keys(this.contatoForm.controls).forEach(key => {
-        this.contatoForm.get(key)?.markAsTouched();
-      });
-    }
-  }
-
-  isFieldInvalid(fieldName: string): boolean {
-    const field = this.contatoForm.get(fieldName);
-    return !!(field && field.invalid && field.touched);
-  }
+  isLoading = false;
+  success = false;
+  error = false;
 
   getMinDate(): string {
     const today = new Date();
     return today.toISOString().split('T')[0];
+  }
+
+  onSubmit(form: any) {
+    if (!form.valid) return;
+
+    this.isLoading = true;
+    this.success = false;
+    this.error = false;
+
+    const url = 'https://formsubmit.co/logistica@mrxeventos.com.br';
+
+    const body = new FormData();
+    Object.entries(this.formData).forEach(([key, value]) => {
+      body.append(key, value as string);
+    });
+
+    this.http.post(url, body, { responseType: 'text' }).subscribe({
+      next: (success) => {
+        console.log('success', success);
+        this.isLoading = false;
+        this.success = true;
+        form.resetForm();
+      },
+      error: (e) => {
+        console.log('error', e);
+        this.isLoading = false;
+        this.error = true;
+      },
+    });
   }
 }

@@ -11,7 +11,8 @@
       "Bash(del \"C:\\Users\\aresn\\IdeaProjects\\MRXEventos\\src\\app\\features\\evento-card\\evento-card.component.html\")",
       "Bash(nul)",
       "Bash(netstat:*)",
-      "Bash(findstr:*)"
+      "Bash(findstr:*)",
+      "Bash(npx ng:*)"
     ],
     "deny": [],
     "ask": []
