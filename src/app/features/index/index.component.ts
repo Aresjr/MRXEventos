@@ -25,12 +25,12 @@ export class IndexComponent implements OnInit, OnDestroy {
   private loadSlides(): void {
     // Detecta automaticamente imagens de 1.jpg até que não encontre mais
     // Você pode aumentar o limite se tiver mais imagens
-    const maxImages = 50; // Limite de busca
+    const maxImages = 36; // Limite de busca
     for (let i = 1; i <= maxImages; i++) {
-      this.slides.push(`assets/imagens/eventos/${i}.jpg`);
+      this.slides.push(`assets/imagens/eventos/${i}.jpeg`);
     }
     // Por enquanto carregamos apenas as 6 imagens existentes
-    this.slides = this.slides.slice(0, 6);
+    // this.slides = this.slides.slice(0, 6);
   }
 
   ngOnInit(): void {
