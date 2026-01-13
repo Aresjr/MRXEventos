@@ -9,9 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: /
 
     steps:
       - name: Checkout do código
@@ -20,10 +17,10 @@ jobs:
       - name: Instalar Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 22
+          node-version: 20
 
       - name: Instalar dependências
-        run: npm install
+        run: npm ci
 
       - name: Build do Angular
         run: npm run build -- --configuration=production
