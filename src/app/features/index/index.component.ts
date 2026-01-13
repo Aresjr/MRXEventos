@@ -25,7 +25,7 @@ export class IndexComponent implements OnInit, OnDestroy {
   private loadSlides(): void {
     // Detecta automaticamente imagens de 1.jpg até que não encontre mais
     // Você pode aumentar o limite se tiver mais imagens
-    const maxImages = 36; // Limite de busca
+    const maxImages = 30; // Limite de busca
     for (let i = 1; i <= maxImages; i++) {
       this.slides.push(`assets/imagens/eventos/${i}.jpeg`);
     }
