@@ -14,8 +14,9 @@ export class EventosCalendarioComponent implements OnInit {
   eventos: Evento[] = [];
   eventosFuturos: Evento[] = [];
   eventosPassados: Evento[] = [];
-  selectedYear: number = new Date().getFullYear();
+  selectedYear: number = 2025;
   selectedMonth: number | null = null;
+  years: number[] = [2025, 2026];
 
   meses = [
     { numero: 0, nome: 'Janeiro' },
@@ -68,14 +69,15 @@ export class EventosCalendarioComponent implements OnInit {
   }
 
   get eventosFiltrados(): Evento[] {
-    if (this.selectedMonth === null) {
-      return this.eventos;
-    }
-
     return this.eventos.filter(evento => {
       const dataEvento = new Date(evento.data + 'T00:00:00');
-      return dataEvento.getMonth() === this.selectedMonth &&
-             dataEvento.getFullYear() === this.selectedYear;
+      const anoCorreto = dataEvento.getFullYear() === this.selectedYear;
+
+      if (this.selectedMonth === null) {
+        return anoCorreto;
+      }
+
+      return anoCorreto && dataEvento.getMonth() === this.selectedMonth;
     });
   }
 
@@ -105,6 +107,11 @@ export class EventosCalendarioComponent implements OnInit {
 
   selecionarMes(mes: number | null): void {
     this.selectedMonth = mes;
+  }
+
+  selecionarAno(ano: number): void {
+    this.selectedYear = ano;
+    this.selectedMonth = null; // Reset month when changing year
   }
 
   getEventosDoMes(mes: number): number {
