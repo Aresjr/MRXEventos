@@ -75,5 +75,33 @@
     "data": "2025-02-01",
     "localizacao": "Balneário Camboriú - SC",
     "fotos": []
+  },
+  {
+    "id": 12,
+    "titulo": "Beach Tennis",
+    "data": "2025-03-20",
+    "localizacao": "Praia Central - Balneário Camboriú - SC",
+    "fotos": []
+  },
+  {
+    "id": 13,
+    "titulo": "Show do Jota Quest",
+    "data": "2025-07-20",
+    "localizacao": "Balneário Camboriú - SC",
+    "fotos": [
+      "assets/imagens/eventos/28.jpeg",
+      "assets/imagens/eventos/29.jpeg",
+      "assets/imagens/eventos/30.jpeg",
+      "assets/imagens/eventos/31.jpeg"
+    ]
+  },
+  {
+    "id": 14,
+    "titulo": "Abertura de Verão",
+    "data": "2024-11-30",
+    "localizacao": "Balneário Camboriú - SC",
+    "fotos": [
+      "assets/imagens/eventos/32.jpeg"
+    ]
   }
 ]
