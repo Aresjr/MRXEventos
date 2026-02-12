@@ -16,7 +16,7 @@ export class EventosCalendarioComponent implements OnInit {
   eventosPassados: Evento[] = [];
   selectedYear: number = 2025;
   selectedMonth: number | null = null;
-  years: number[] = [2025, 2026];
+  years: number[] = [2024, 2025, 2026];
 
   meses = [
     { numero: 0, nome: 'Janeiro' },
