@@ -1,11 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { EventosCalendarioComponent } from '../eventos-calendario/eventos-calendario.component';
 import { ContatoFormComponent } from '../contato-form/contato-form.component';
 
 @Component({
   selector: 'app-index',
-  imports: [CommonModule, EventosCalendarioComponent, ContatoFormComponent],
+  imports: [CommonModule, RouterLink, EventosCalendarioComponent, ContatoFormComponent],
   templateUrl: './index.component.html'
 })
 export class IndexComponent implements OnInit, OnDestroy {

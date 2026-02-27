@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { Evento } from '../../models/evento.model';
 import { EventoCardComponent } from '../evento-card/evento-card.component';
+import { EventoService } from '../../services/evento.service';
 
 @Component({
   selector: 'app-eventos-calendario',
@@ -33,14 +33,14 @@ export class EventosCalendarioComponent implements OnInit {
     { numero: 11, nome: 'Dezembro' }
   ];
 
-  constructor(private http: HttpClient) {}
+  constructor(private eventoService: EventoService) {}
 
   ngOnInit(): void {
     this.carregarEventos();
   }
 
   carregarEventos(): void {
-    this.http.get<Evento[]>('assets/data/eventos.json').subscribe({
+    this.eventoService.getEventos().subscribe({
       next: (data) => {
         this.eventos = data.sort((a, b) =>
           new Date(b.data).getTime() - new Date(a.data).getTime()
