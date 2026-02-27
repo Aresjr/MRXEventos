@@ -1,0 +1,141 @@
+{
+  "eventos": [
+    {
+      "id": 1,
+      "titulo": "Casamento Coletivo",
+      "data": "2024-06-01",
+      "localizacao": "",
+      "fotos": []
+    },
+    {
+      "id": 2,
+      "titulo": "BC Folia",
+      "data": "2025-04-01",
+      "localizacao": "Balneário Camboriú - SC",
+      "fotos": []
+    },
+    {
+      "id": 3,
+      "titulo": "Abertura de Natal",
+      "data": "2025-12-24",
+      "localizacao": "Navegantes - SC",
+      "fotos": []
+    },
+    {
+      "id": 4,
+      "titulo": "Farroupilha BC",
+      "data": "2025-07-01",
+      "localizacao": "Balneário Camboriú - SC",
+      "fotos": []
+    },
+    {
+      "id": 5,
+      "titulo": "Arrancadão de Canoas",
+      "data": "2025-07-01",
+      "localizacao": "Balneário Camboriú - SC",
+      "fotos": []
+    },
+    {
+      "id": 6,
+      "titulo": "Festa do Bom Sucesso",
+      "data": "2025-07-25",
+      "localizacao": "Balneário Camboriú - SC",
+      "fotos": []
+    },
+    {
+      "id": 7,
+      "titulo": "Festa do Pescador",
+      "data": "2025-07-01",
+      "localizacao": "Balneário Camboriú - SC",
+      "fotos": []
+    },
+    {
+      "id": 8,
+      "titulo": "Festa da Tainha",
+      "data": "2025-06-01",
+      "localizacao": "Balneário Camboriú - SC",
+      "fotos": []
+    },
+    {
+      "id": 9,
+      "titulo": "Festa da Cerveja",
+      "data": "2024-10-05",
+      "localizacao": "Balneário Camboriú - SC",
+      "fotos": [
+        "assets/imagens/eventos/1.jpeg",
+        "assets/imagens/eventos/2.jpeg",
+        "assets/imagens/eventos/3.jpeg",
+        "assets/imagens/eventos/4.jpeg",
+        "assets/imagens/eventos/5.jpeg",
+        "assets/imagens/eventos/6.jpeg",
+        "assets/imagens/eventos/7.jpeg",
+        "assets/imagens/eventos/8.jpeg"
+      ]
+    },
+    {
+      "id": 10,
+      "titulo": "Torneio de Beach Tennis",
+      "data": "2024-11-09",
+      "localizacao": "Balneário Camboriú - SC",
+      "fotos": [
+        "assets/imagens/eventos/9.jpeg",
+        "assets/imagens/eventos/10.jpeg",
+        "assets/imagens/eventos/11.jpeg",
+        "assets/imagens/eventos/12.jpeg",
+        "assets/imagens/eventos/13.jpeg",
+        "assets/imagens/eventos/14.jpeg",
+        "assets/imagens/eventos/15.jpeg",
+        "assets/imagens/eventos/16.jpeg"
+      ]
+    },
+    {
+      "id": 11,
+      "titulo": "BC Expo",
+      "data": "2024-11-14",
+      "localizacao": "Balneário Camboriú - SC",
+      "fotos": [
+        "assets/imagens/eventos/17.jpeg",
+        "assets/imagens/eventos/18.jpeg",
+        "assets/imagens/eventos/19.jpeg",
+        "assets/imagens/eventos/20.jpeg",
+        "assets/imagens/eventos/21.jpeg",
+        "assets/imagens/eventos/22.jpeg",
+        "assets/imagens/eventos/23.jpeg",
+        "assets/imagens/eventos/24.jpeg"
+      ]
+    },
+    {
+      "id": 12,
+      "titulo": "Natal Ilha",
+      "data": "2024-11-30",
+      "localizacao": "Balneário Camboriú - SC",
+      "fotos": [
+        "assets/imagens/eventos/25.jpeg",
+        "assets/imagens/eventos/26.jpeg",
+        "assets/imagens/eventos/27.jpeg"
+      ]
+    },
+    {
+      "id": 13,
+      "titulo": "Reveillon",
+      "data": "2024-12-31",
+      "localizacao": "Balneário Camboriú - SC",
+      "fotos": [
+        "assets/imagens/eventos/28.jpeg",
+        "assets/imagens/eventos/29.jpeg",
+        "assets/imagens/eventos/30.jpeg",
+        "assets/imagens/eventos/31.jpeg"
+      ]
+    },
+    {
+      "id": 14,
+      "titulo": "Abertura de Verão",
+      "data": "2024-11-30",
+      "localizacao": "Balneário Camboriú - SC",
+      "fotos": [
+        "assets/imagens/eventos/32.jpeg"
+      ]
+    }
+  ]
+}
+
