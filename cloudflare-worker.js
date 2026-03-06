@@ -1,3 +1,5 @@
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Access-Control-Allow-Origin': '*',
 // Cloudflare Worker para API de Eventos
 // Deploy em: https://dash.cloudflare.com/
 

@@ -7,25 +7,28 @@ Site institucional para http://mrxeventos.com.br
 - **Página Principal**: Apresentação da empresa, carrossel de imagens, calendário de eventos
 - **Calendário de Eventos**: Visualização de eventos futuros e passados com filtros por ano e mês
 - **Formulário de Contato**: Permite aos visitantes entrarem em contato
-- **Página de Administração**: Gerenciamento dinâmico de eventos com persistência real
+- **Página de Administração**: Gerenciamento dinâmico de eventos com autenticação
+- **Sistema de Login**: Autenticação segura com Supabase
 
 ## Página de Administração
 
-O site possui uma página de administração acessível em `/adm` que permite:
+O site possui uma página de administração protegida acessível em `/adm` que permite:
+- **Autenticação** com email e senha (Supabase Auth)
 - Cadastrar novos eventos com nome, data, localização e fotos
 - Visualizar todos os eventos cadastrados
-- Excluir eventos
-- Upload de múltiplas fotos por evento
+- Excluir eventos e suas fotos
+- Upload real de múltiplas fotos por evento (Supabase Storage)
 
-### Sistema de Persistência
+### Sistema de Persistência e Autenticação
 
-Os eventos são salvos em um **arquivo JSON permanente** (`db.json`) através de uma API REST:
-- **Desenvolvimento**: JSON Server (porta 3000)
-- **Produção**: Cloudflare Worker + KV Storage
+**Supabase** - Plataforma completa Backend-as-a-Service:
+- **Banco de Dados**: PostgreSQL com Row Level Security (RLS)
+- **Storage**: Upload real de fotos com URLs públicas automáticas
+- **Autenticação**: Login/Logout com sessão persistente
+- **Segurança**: Apenas usuários autenticados podem criar/editar/deletar
 
 📖 **Documentação completa**: 
-- [PERSISTENCIA_README.md](PERSISTENCIA_README.md) - Guia de uso
-- [DEPLOY_GUIDE.md](DEPLOY_GUIDE.md) - Deploy em produção
+- [SUPABASE_SETUP.md](SUPABASE_SETUP.md) - Guia passo a passo de configuração
 - [ADMIN_DOCUMENTATION.md](ADMIN_DOCUMENTATION.md) - Documentação técnica
 
 ## Desenvolvimento
@@ -35,22 +38,22 @@ Os eventos são salvos em um **arquivo JSON permanente** (`db.json`) através de
 npm install
 ```
 
-### Servidor de desenvolvimento (Recomendado)
-```bash
-npm run dev
-```
-Inicia simultaneamente:
-- JSON Server (API) na porta 3000
-- Angular (Frontend) na porta 8081
+### Configurar Supabase
 
-Acesse: `http://localhost:8081`  
-Admin: `http://localhost:8081/adm`
+1. Crie um projeto em https://supabase.com/
+2. Copie as credenciais (URL + anon key)
+3. Cole em `src/app/config/supabase.config.ts`
+4. Siga o guia completo em [SUPABASE_SETUP.md](SUPABASE_SETUP.md)
 
-### Comandos Alternativos
+### Servidor de desenvolvimento
 ```bash
-npm run api      # Apenas API (porta 3000)
-npm start        # Apenas Frontend (porta 8081)
+npm start
 ```
+
+Acesse:
+- Site: `http://localhost:8081`
+- Login: `http://localhost:8081/login`
+- Admin: `http://localhost:8081/adm` (requer autenticação)
 
 ### Build para produção
 ```bash
@@ -63,39 +66,69 @@ npm run build
 - TypeScript
 - Tailwind CSS
 - DaisyUI
-- JSON Server (API REST)
+- **Supabase** (Backend-as-a-Service)
+  - PostgreSQL Database
+  - Storage (Fotos)
+  - Authentication
 - RxJS
 
 ## Estrutura de Dados
 
-Os eventos são armazenados em `db.json`:
-```json
-{
-  "eventos": [
-    {
-      "id": 1,
-      "titulo": "Nome do Evento",
-      "data": "2026-03-01",
-      "localizacao": "Local - Estado",
-      "fotos": ["url1", "url2"]
-    }
-  ]
-}
+### Tabela: eventos (Supabase)
+```sql
+CREATE TABLE eventos (
+  id BIGSERIAL PRIMARY KEY,
+  titulo TEXT NOT NULL,
+  data DATE NOT NULL,
+  localizacao TEXT,
+  fotos TEXT[],
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
 ```
+
+### Storage: eventos-fotos (Supabase)
+Bucket público para armazenar fotos dos eventos com URLs automáticas.
+
+## Autenticação
+
+O sistema usa **Supabase Authentication**:
+- Login com email/senha
+- Sessão persistente
+- Proteção de rotas com AuthGuard
+- Logout funcional
 
 ## Deploy
 
 ### Frontend (Cloudflare Pages)
 Já configurado! Basta fazer push para o GitHub.
 
-### Backend (Cloudflare Worker)
-Veja o guia completo em [DEPLOY_GUIDE.md](DEPLOY_GUIDE.md)
+### Backend (Supabase)
+Não precisa configurar nada adicional! O Supabase funciona em qualquer plataforma.
+
+### Configuração Necessária
+1. Criar projeto no Supabase
+2. Configurar credenciais em `supabase.config.ts`
+3. Criar tabela e storage (SQL fornecido)
+4. Criar usuário admin
+5. Deploy automático no git push
 
 ## Documentação
 
-- [PERSISTENCIA_README.md](PERSISTENCIA_README.md) - Guia rápido de persistência
-- [DEPLOY_GUIDE.md](DEPLOY_GUIDE.md) - Guia de deploy completo
+- [SUPABASE_SETUP.md](SUPABASE_SETUP.md) - Configuração do Supabase (LEIA PRIMEIRO!)
 - [ADMIN_DOCUMENTATION.md](ADMIN_DOCUMENTATION.md) - Documentação técnica
 - [GUIA_USUARIO.md](GUIA_USUARIO.md) - Manual para usuários
 - [QUICK_REFERENCE.md](QUICK_REFERENCE.md) - Referência rápida
+
+## Segurança
+
+- ✅ Row Level Security (RLS) no banco
+- ✅ Apenas autenticados podem criar/editar/deletar
+- ✅ Todos podem visualizar eventos (público)
+- ✅ Storage com políticas específicas
+- ✅ Credenciais não expostas (anon key é pública, segurança via RLS)
+
+## Licença
+
+Todos os direitos reservados - MRX Eventos
 
