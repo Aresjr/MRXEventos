@@ -43,7 +43,7 @@ export class EventosCalendarioComponent implements OnInit {
     this.http.get<Evento[]>('assets/data/eventos.json').subscribe({
       next: (data) => {
         this.eventos = data.sort((a, b) =>
-          new Date(b.data).getTime() - new Date(a.data).getTime()
+          new Date(a.data).getTime() - new Date(b.data).getTime()
         );
         this.separarEventos();
       },
@@ -65,7 +65,7 @@ export class EventosCalendarioComponent implements OnInit {
     this.eventosPassados = this.eventos.filter(evento => {
       const dataEvento = new Date(evento.data + 'T00:00:00');
       return dataEvento < hoje;
-    }).sort((a, b) => new Date(b.data).getTime() - new Date(a.data).getTime());
+    }).sort((a, b) => new Date(a.data).getTime() - new Date(b.data).getTime());
   }
 
   get eventosFiltrados(): Evento[] {
