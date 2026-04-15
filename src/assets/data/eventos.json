@@ -103,5 +103,32 @@
     "fotos": [
       "assets/imagens/eventos/32.jpeg"
     ]
+  },
+  {
+    "id": 15,
+    "titulo": "Lido Di Mare",
+    "data": "2026-01-31",
+    "localizacao": "Balneário Camboriú - SC",
+    "fotos": [
+      "assets/imagens/eventos/2026-01-31 - Lido Di Mare - Balenario Camboriu/1.jpeg",
+      "assets/imagens/eventos/2026-01-31 - Lido Di Mare - Balenario Camboriu/2.jpeg",
+      "assets/imagens/eventos/2026-01-31 - Lido Di Mare - Balenario Camboriu/3.jpeg",
+      "assets/imagens/eventos/2026-01-31 - Lido Di Mare - Balenario Camboriu/4.jpeg"
+    ]
+  },
+  {
+    "id": 16,
+    "titulo": "BT400",
+    "data": "2026-03-24",
+    "localizacao": "Balneário Camboriú - SC",
+    "fotos": [
+      "assets/imagens/eventos/2026-03-24 - BT400 - Balenario Camboriu/1.jpg",
+      "assets/imagens/eventos/2026-03-24 - BT400 - Balenario Camboriu/2.jpg",
+      "assets/imagens/eventos/2026-03-24 - BT400 - Balenario Camboriu/3.jpg",
+      "assets/imagens/eventos/2026-03-24 - BT400 - Balenario Camboriu/4.jpg",
+      "assets/imagens/eventos/2026-03-24 - BT400 - Balenario Camboriu/5.jpg",
+      "assets/imagens/eventos/2026-03-24 - BT400 - Balenario Camboriu/6.jpg",
+      "assets/imagens/eventos/2026-03-24 - BT400 - Balenario Camboriu/7.jpg"
+    ]
   }
 ]
