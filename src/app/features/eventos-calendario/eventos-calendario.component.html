@@ -15,7 +15,7 @@
     <!-- Calendário de Meses -->
     <div class="mb-12">
       <!-- Seleção de Ano -->
-      <div class="flex items-center justify-center gap-4 mb-8">
+      <div class="flex items-center justify-center gap-4 mb-8 flex-wrap">
         <button
           *ngFor="let year of years"
           (click)="selecionarAno(year)"
@@ -24,7 +24,7 @@
           class="py-3 px-8 rounded-lg font-bold text-xl transition-all hover:scale-105 border-2"
           [class.border-primary]="selectedYear === year"
           [class.border-transparent]="selectedYear !== year">
-          {{ year }}
+          {{ year === null ? 'Todos' : year }}
         </button>
       </div>
 
