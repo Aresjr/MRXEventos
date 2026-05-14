@@ -14,9 +14,9 @@ export class EventosCalendarioComponent implements OnInit {
   eventos: Evento[] = [];
   eventosFuturos: Evento[] = [];
   eventosPassados: Evento[] = [];
-  selectedYear: number = 2025;
+  selectedYear: number | null = null;
   selectedMonth: number | null = null;
-  years: number[] = [2024, 2025, 2026];
+  years: (number | null)[] = [];
 
   meses = [
     { numero: 0, nome: 'Janeiro' },
@@ -36,7 +36,17 @@ export class EventosCalendarioComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
+    this.gerarListaDeAnos();
     this.carregarEventos();
+  }
+
+  gerarListaDeAnos(): void {
+    const anoAtual = new Date().getFullYear();
+    const anoInicio = 2024;
+    this.years = [null]; // Adiciona 'Todos' como primeiro elemento
+    for (let ano = anoInicio; ano <= anoAtual; ano++) {
+      this.years.push(ano);
+    }
   }
 
   carregarEventos(): void {
@@ -71,7 +81,7 @@ export class EventosCalendarioComponent implements OnInit {
   get eventosFiltrados(): Evento[] {
     return this.eventos.filter(evento => {
       const dataEvento = new Date(evento.data + 'T00:00:00');
-      const anoCorreto = dataEvento.getFullYear() === this.selectedYear;
+      const anoCorreto = this.selectedYear === null || dataEvento.getFullYear() === this.selectedYear;
 
       if (this.selectedMonth === null) {
         return anoCorreto;
@@ -88,8 +98,8 @@ export class EventosCalendarioComponent implements OnInit {
 
     return this.eventosFuturos.filter(evento => {
       const dataEvento = new Date(evento.data + 'T00:00:00');
-      return dataEvento.getMonth() === this.selectedMonth &&
-             dataEvento.getFullYear() === this.selectedYear;
+      const anoCorreto = this.selectedYear === null || dataEvento.getFullYear() === this.selectedYear;
+      return anoCorreto && dataEvento.getMonth() === this.selectedMonth;
     });
   }
 
@@ -100,8 +110,8 @@ export class EventosCalendarioComponent implements OnInit {
 
     return this.eventosPassados.filter(evento => {
       const dataEvento = new Date(evento.data + 'T00:00:00');
-      return dataEvento.getMonth() === this.selectedMonth &&
-             dataEvento.getFullYear() === this.selectedYear;
+      const anoCorreto = this.selectedYear === null || dataEvento.getFullYear() === this.selectedYear;
+      return anoCorreto && dataEvento.getMonth() === this.selectedMonth;
     });
   }
 
@@ -109,7 +119,7 @@ export class EventosCalendarioComponent implements OnInit {
     this.selectedMonth = mes;
   }
 
-  selecionarAno(ano: number): void {
+  selecionarAno(ano: number | null): void {
     this.selectedYear = ano;
     this.selectedMonth = null; // Reset month when changing year
   }
@@ -117,7 +127,8 @@ export class EventosCalendarioComponent implements OnInit {
   getEventosDoMes(mes: number): number {
     return this.eventos.filter(evento => {
       const dataEvento = new Date(evento.data + 'T00:00:00');
-      return dataEvento.getMonth() === mes && dataEvento.getFullYear() === this.selectedYear;
+      const anoCorreto = this.selectedYear === null || dataEvento.getFullYear() === this.selectedYear;
+      return dataEvento.getMonth() === mes && anoCorreto;
     }).length;
   }
 
